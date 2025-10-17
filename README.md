@@ -1,16 +1,14 @@
-⚠️ This repository is not actively being maintained. For a go SDK please look at [web5-go](https://github.com/TBD54566975/web5-go/). ⚠️
+🙏 Original Project Acknowledgment: This project is a community fork, based on the excellent work of the TBD54566975 team in their ssi-sdk repository. We maintain attribution and adhere to the original Apache 2.0 license.
 
-[![godoc ssi-sdk](https://img.shields.io/badge/godoc-ssi--sdk-blue)](https://pkg.go.dev/github.com/TBD54566975/ssi-sdk)
-[![go version 1.23.2](https://img.shields.io/badge/go_version-1.23.2-brightgreen)](https://golang.org/)
-[![Go Report Card A+](https://goreportcard.com/badge/github.com/TBD54566975/ssi-sdk)](https://goreportcard.com/report/github.com/TBD54566975/ssi-sdk)
-[![license Apache 2](https://img.shields.io/badge/license-Apache%202-black)](https://github.com/TBD54566975/ssi-sdk/blob/main/LICENSE)
-[![issues](https://img.shields.io/github/issues/TBD54566975/ssi-sdk)](https://github.com/TBD54566975/ssi-sdk/issues)
-![ssi-sdk-ci status](https://github.com/TBD54566975/ssi-sdk/workflows/ssi-sdk-ci/badge.svg?branch=main&event=push)
-[![codecov](https://codecov.io/gh/TBD54566975/ssi-sdk/branch/main/graph/badge.svg?token=8SD0TO9Z9E)](https://codecov.io/gh/TBD54566975/ssi-sdk)
-
-# ssi-sdk
+# EUDW-SSI-Go (eIDAS2 and EUDI Wallet Aligned Go Library)
 
 # Introduction
+
+The original `ssi-sdk` is very good, but it was archived at the end of 2024 and is unmaintained. Other options, including the one recommended by the original authors [web5-go](https://github.com/decentralized-identity/web5-go), are either not well maintained or not aligned with the EU eIDAS2 Regulation. This can be seen, among many other things, in the lack of support for secp256r1 in `web5-go` and related did methods.
+
+After analyzing the possibility of contributing to those other projects, we have taken the decission to fork the TBD54566975 `ssi-sdk` repo, which already provides a better base for eIDAS2 alignment.
+
+Most references to `ssi-sdk` in this README an other documentation should be understood as references to `eudiw-ssi-go`, unless the implies a reference to the original repo. In the future, and to avoid confusions, the documentation will be updated accordingly.
 
 Named `ssi-sdk`, this SDK encapsulates a set of standards related
 to [Self Sovereign Identity](http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html).

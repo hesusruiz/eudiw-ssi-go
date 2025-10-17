@@ -3,8 +3,8 @@ package resolution
 import (
 	"reflect"
 
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 // Result encapsulates the tuple of a DID resolution https://www.w3.org/TR/did-core/#did-resolution

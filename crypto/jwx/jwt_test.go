@@ -3,7 +3,7 @@ package jwx
 import (
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/lestrrat-go/jwx/v2/jwt"
 	"github.com/stretchr/testify/assert"
 )

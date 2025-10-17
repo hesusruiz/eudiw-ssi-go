@@ -6,18 +6,18 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/cryptosuite/jws2020"
-	"github.com/TBD54566975/ssi-sdk/did"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite/jws2020"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
 	"github.com/jorrizza/ed2curve25519"
 	"github.com/mr-tron/base58"
 	"github.com/multiformats/go-multibase"
 	"github.com/multiformats/go-multicodec"
 
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
 
 	"github.com/pkg/errors"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 
 	"github.com/multiformats/go-varint"
 )
@@ -189,7 +189,7 @@ func (d DIDKey) Decode() ([]byte, crypto.KeyType, error) {
 //   - EnableEncryptionKeyDerivationOption (default to true)
 //   - PublicKeyFormatOption (defaults to JWK)
 //
-// TODO(gabe) support BLS curves https://github.com/TBD54566975/ssi-sdk/issues/381
+// TODO(gabe) support BLS curves https://github.com/hesusruiz/eudiw-ssi-go/issues/381
 func (d DIDKey) Expand(opts ...Option) (*did.Document, error) {
 	publicKeyFormat, enableEncryptionDerivation, err := processExpansionOptions(opts...)
 	if err != nil {

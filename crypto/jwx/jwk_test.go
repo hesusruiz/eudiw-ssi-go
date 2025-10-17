@@ -4,7 +4,7 @@ import (
 	"crypto/ecdsa"
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/stretchr/testify/assert"
 )
 

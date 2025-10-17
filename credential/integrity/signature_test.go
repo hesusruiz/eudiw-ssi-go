@@ -6,15 +6,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/did/ion"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/did/ion"
 	"github.com/goccy/go-json"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
-	"github.com/TBD54566975/ssi-sdk/did/web"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/did/web"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"

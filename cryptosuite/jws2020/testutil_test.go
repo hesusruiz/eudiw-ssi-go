@@ -1,7 +1,7 @@
 package jws2020
 
 import (
-	"github.com/TBD54566975/ssi-sdk/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 )
 
 type TestCredential struct {

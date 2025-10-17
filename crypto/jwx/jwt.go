@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/lestrrat-go/jwx/v2/jwa"
 	"github.com/lestrrat-go/jwx/v2/jws"
@@ -180,7 +180,7 @@ func (s *Signer) SignWithDefaults(kvs map[string]any) ([]byte, error) {
 		}
 	}
 
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	alg := s.ALG
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA.String()
@@ -191,7 +191,7 @@ func (s *Signer) SignWithDefaults(kvs map[string]any) ([]byte, error) {
 // Verify parses a token given the verifier's known algorithm and key, and returns an error, which is nil upon success
 func (v *Verifier) Verify(token string) error {
 	alg := jwa.SignatureAlgorithm(v.ALG)
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA
 	}
@@ -217,7 +217,7 @@ func (*Verifier) Parse(token string) (jws.Headers, jwt.Token, error) {
 // VerifyAndParse attempts to turn a string into a jwt.Token and verify its signature using the verifier
 func (v *Verifier) VerifyAndParse(token string) (jws.Headers, jwt.Token, error) {
 	alg := jwa.SignatureAlgorithm(v.ALG)
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA
 	}

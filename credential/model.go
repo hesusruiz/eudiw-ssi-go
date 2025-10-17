@@ -3,8 +3,8 @@ package credential
 import (
 	"reflect"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 // VerifiableCredential is the verifiable credential model outlined in the

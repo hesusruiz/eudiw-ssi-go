@@ -6,11 +6,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
 	"github.com/pkg/errors"
 
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 type (

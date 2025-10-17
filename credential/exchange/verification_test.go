@@ -4,16 +4,16 @@ import (
 	"context"
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/credential/integrity"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite/jws2020"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/integrity"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite/jws2020"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
 )
 
 func TestVerifyPresentationSubmission(t *testing.T) {

@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
 )
 
 func TestResolveKeyForDID(t *testing.T) {

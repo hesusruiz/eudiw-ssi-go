@@ -5,9 +5,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/example"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/example"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
 	}
 
 	// For more information on VC object, go to:
-	// https://github.com/TBD54566975/ssi-sdk/blob/main/credential/model.go
+	// https://github.com/hesusruiz/eudiw-ssi-go/blob/main/credential/model.go
 	vc := credential.VerifiableCredential{
 		Context:           knownContext,
 		ID:                knownID,

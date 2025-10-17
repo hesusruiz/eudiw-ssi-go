@@ -3,11 +3,11 @@ package parsing
 import (
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/credential/integrity"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite/jws2020"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/integrity"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite/jws2020"
 	"github.com/goccy/go-json"
 	"github.com/stretchr/testify/assert"
 )

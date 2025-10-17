@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
 )
 
 // Exercise all builder methods

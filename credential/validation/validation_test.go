@@ -3,8 +3,8 @@ package validation
 import (
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	credschema "github.com/TBD54566975/ssi-sdk/credential/schema"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	credschema "github.com/hesusruiz/eudiw-ssi-go/credential/schema"
 	"github.com/stretchr/testify/assert"
 )
 

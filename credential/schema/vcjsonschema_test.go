@@ -5,7 +5,7 @@ import (
 	"embed"
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
 	"github.com/goccy/go-json"
 	"github.com/stretchr/testify/assert"
 )

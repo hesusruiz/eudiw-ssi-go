@@ -5,18 +5,18 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/credential/integrity"
-	"github.com/TBD54566975/ssi-sdk/credential/parsing"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
-	"github.com/TBD54566975/ssi-sdk/schema"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/integrity"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/parsing"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/schema"
 
 	"github.com/goccy/go-json"
 	"github.com/oliveagle/jsonpath"
 	"github.com/pkg/errors"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 // VerifiedSubmissionData is the result of a successful verification of a presentation submission
@@ -124,7 +124,7 @@ func VerifyPresentationSubmissionVP(def PresentationDefinition, vp credential.Ve
 				strings.Join(inputDescriptor.Format.FormatValues(), ", "))
 		}
 
-		// TODO(gabe) support nested paths in presentation submissions https://github.com/TBD54566975/ssi-sdk/issues/73
+		// TODO(gabe) support nested paths in presentation submissions https://github.com/hesusruiz/eudiw-ssi-go/issues/73
 		if submissionDescriptor.PathNested != nil {
 			return nil, fmt.Errorf("submission with nested paths not supported: %s", submissionDescriptor.ID)
 		}
@@ -199,8 +199,8 @@ func VerifyPresentationSubmissionVP(def PresentationDefinition, vp credential.Ve
 		// data to the value being returned
 		verifiedSubmissionData = append(verifiedSubmissionData, verifiedSubmissionDatum)
 
-		// TODO(gabe) is_holder and same_subject cannot yet be implemented https://github.com/TBD54566975/ssi-sdk/issues/64
-		// TODO(gabe) check credential status https://github.com/TBD54566975/ssi-sdk/issues/65
+		// TODO(gabe) is_holder and same_subject cannot yet be implemented https://github.com/hesusruiz/eudiw-ssi-go/issues/64
+		// TODO(gabe) check credential status https://github.com/hesusruiz/eudiw-ssi-go/issues/65
 	}
 	return verifiedSubmissionData, nil
 }

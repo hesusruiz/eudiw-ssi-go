@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
 	"github.com/goccy/go-json"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"

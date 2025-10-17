@@ -3,8 +3,8 @@ package issuance
 import (
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 	"github.com/goccy/go-json"
 	"github.com/pkg/errors"
 	"golang.org/x/text/language"

@@ -4,21 +4,21 @@ import (
 	"context"
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/credential/integrity"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite/jws2020"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/integrity"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite/jws2020"
 	"github.com/goccy/go-json"
 	"github.com/oliveagle/jsonpath"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
 )
 
 func TestBuildPresentationSubmission(t *testing.T) {
@@ -402,7 +402,7 @@ func TestProcessInputDescriptor(t *testing.T) {
 		assert.Equal(tt, "test-verifiable-credential", vc.ID)
 	})
 
-	// TODO(gabe): update with https://github.com/TBD54566975/ssi-sdk/issues/354
+	// TODO(gabe): update with https://github.com/hesusruiz/eudiw-ssi-go/issues/354
 	t.Run("Simple Descriptor with One VC Claim and Limited Disclosure", func(tt *testing.T) {
 		id := InputDescriptor{
 			ID: "id-1",

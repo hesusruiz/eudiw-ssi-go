@@ -54,17 +54,17 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/TBD54566975/ssi-sdk/credential/integrity"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/integrity"
 	"github.com/goccy/go-json"
 	"github.com/sirupsen/logrus"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/did/peer"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
-	"github.com/TBD54566975/ssi-sdk/example"
-	emp "github.com/TBD54566975/ssi-sdk/example/usecase/employer_university_flow/pkg"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/did/peer"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/example"
+	emp "github.com/hesusruiz/eudiw-ssi-go/example/usecase/employer_university_flow/pkg"
 )
 
 // Set to debug mode here

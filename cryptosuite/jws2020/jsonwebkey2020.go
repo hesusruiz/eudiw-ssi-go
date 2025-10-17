@@ -4,10 +4,10 @@ import (
 	gocrypto "crypto"
 	"fmt"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 	"github.com/lestrrat-go/jwx/v2/jwa"
 	"github.com/lestrrat-go/jwx/v2/jws"
 	"github.com/pkg/errors"
@@ -182,7 +182,7 @@ func (s *JSONWebKeySigner) Sign(tbs []byte) ([]byte, error) {
 	if err := headers.Set(jws.CriticalKey, []string{b64}); err != nil {
 		return nil, err
 	}
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	alg := s.ALG
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA.String()
@@ -243,7 +243,7 @@ func (v JSONWebKeyVerifier) Verify(message, signature []byte) error {
 	if err != nil {
 		return errors.Wrap(err, "getting public key")
 	}
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	alg := v.ALG
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA.String()

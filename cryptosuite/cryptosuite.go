@@ -6,8 +6,8 @@ import (
 
 	"github.com/goccy/go-json"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	. "github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	. "github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 var (

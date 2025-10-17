@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/did/peer"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/did/peer"
 )
 
 // SimpleWallet is a sample wallet

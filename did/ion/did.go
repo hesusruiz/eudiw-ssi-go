@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/cryptosuite"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite"
 	"github.com/goccy/go-json"
 
-	"github.com/TBD54566975/ssi-sdk/did"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
 	"github.com/pkg/errors"
 )
 

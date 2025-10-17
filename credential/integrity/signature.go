@@ -6,16 +6,16 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
 
 	"github.com/pkg/errors"
 )
 
 // VerifyCredentialSignature verifies the signature of a credential of any type
-// TODO(gabe) support other types of credentials https://github.com/TBD54566975/ssi-sdk/issues/352
+// TODO(gabe) support other types of credentials https://github.com/hesusruiz/eudiw-ssi-go/issues/352
 func VerifyCredentialSignature(ctx context.Context, genericCred any, r resolution.Resolver) (bool, error) {
 	if genericCred == nil {
 		return false, errors.New("credential cannot be empty")
@@ -99,7 +99,7 @@ func VerifyJWTCredential(ctx context.Context, cred string, r resolution.Resolver
 }
 
 // VerifyDataIntegrityCredential verifies the signature of a Data Integrity credential
-// TODO(gabe): https://github.com/TBD54566975/ssi-sdk/issues/196
+// TODO(gabe): https://github.com/hesusruiz/eudiw-ssi-go/issues/196
 func VerifyDataIntegrityCredential(_ context.Context, cred credential.VerifiableCredential, _ resolution.Resolver) (bool, error) {
 	if cred.IsEmpty() {
 		return false, errors.New("credential cannot be empty")

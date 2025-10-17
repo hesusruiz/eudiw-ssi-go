@@ -82,7 +82,7 @@ func (k *PrivateKeyJWK) ToPrivateKey() (gocrypto.PrivateKey, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "getting alg from key and curve")
 		}
-		// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+		// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 		if alg == jwa.Ed25519.String() {
 			alg = jwa.EdDSA.String()
 		}

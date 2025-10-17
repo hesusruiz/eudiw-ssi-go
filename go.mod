@@ -1,4 +1,4 @@
-module github.com/TBD54566975/ssi-sdk
+module github.com/hesusruiz/eudiw-ssi-go
 
 go 1.23
 

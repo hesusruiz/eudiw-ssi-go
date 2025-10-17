@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did/resolution"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did/resolution"
 
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
@@ -24,7 +24,7 @@ const (
 )
 
 // SignVerifiableCredentialJWT is prepared according to https://w3c.github.io/vc-jwt/#version-1.1
-// which will soon be deprecated by https://w3c.github.io/vc-jwt/ see: https://github.com/TBD54566975/ssi-sdk/issues/191
+// which will soon be deprecated by https://w3c.github.io/vc-jwt/ see: https://github.com/hesusruiz/eudiw-ssi-go/issues/191
 func SignVerifiableCredentialJWT(signer jwx.Signer, cred credential.VerifiableCredential) ([]byte, error) {
 	if cred.IsEmpty() {
 		return nil, errors.New("credential cannot be empty")
@@ -45,7 +45,7 @@ func SignVerifiableCredentialJWT(signer jwx.Signer, cred credential.VerifiableCr
 		}
 	}
 
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	alg := signer.ALG
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA.String()
@@ -277,7 +277,7 @@ func SignVerifiablePresentationJWT(signer jwx.Signer, parameters *JWTVVPParamete
 			return nil, errors.Wrap(err, "setting KID protected header")
 		}
 	}
-	// Ed25519 is not supported by the jwx library yet https://github.com/TBD54566975/ssi-sdk/issues/520
+	// Ed25519 is not supported by the jwx library yet https://github.com/hesusruiz/eudiw-ssi-go/issues/520
 	alg := signer.ALG
 	if alg == "Ed25519" {
 		alg = jwa.EdDSA.String()

@@ -14,15 +14,15 @@ import (
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/credential/exchange"
-	"github.com/TBD54566975/ssi-sdk/credential/manifest"
-	"github.com/TBD54566975/ssi-sdk/credential/rendering"
-	"github.com/TBD54566975/ssi-sdk/credential/schema"
-	"github.com/TBD54566975/ssi-sdk/crypto"
-	"github.com/TBD54566975/ssi-sdk/did/key"
-	"github.com/TBD54566975/ssi-sdk/example"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/exchange"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/manifest"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/rendering"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/schema"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
+	"github.com/hesusruiz/eudiw-ssi-go/did/key"
+	"github.com/hesusruiz/eudiw-ssi-go/example"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 )
 
 // getDIDKey will return a DID key and its private key

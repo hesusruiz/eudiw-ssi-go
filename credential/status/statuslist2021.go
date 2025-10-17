@@ -11,8 +11,8 @@ import (
 
 	"github.com/goccy/go-json"
 
-	"github.com/TBD54566975/ssi-sdk/credential"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/credential"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 	"github.com/bits-and-blooms/bitset"
 	"github.com/pkg/errors"
 )

@@ -3,9 +3,9 @@ package manifest
 import (
 	"reflect"
 
-	"github.com/TBD54566975/ssi-sdk/credential/exchange"
-	"github.com/TBD54566975/ssi-sdk/credential/rendering"
-	"github.com/TBD54566975/ssi-sdk/util"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/exchange"
+	"github.com/hesusruiz/eudiw-ssi-go/credential/rendering"
+	"github.com/hesusruiz/eudiw-ssi-go/util"
 	"github.com/pkg/errors"
 )
 

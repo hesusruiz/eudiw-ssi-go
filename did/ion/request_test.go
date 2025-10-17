@@ -3,8 +3,8 @@ package ion
 import (
 	"testing"
 
-	"github.com/TBD54566975/ssi-sdk/crypto/jwx"
-	"github.com/TBD54566975/ssi-sdk/did"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
+	"github.com/hesusruiz/eudiw-ssi-go/did"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -11,7 +11,6 @@ import (
 	"strings"
 	"testing"
 
-	secp "github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/multiformats/go-multibase"
 	"github.com/multiformats/go-multicodec"
 
@@ -79,11 +78,6 @@ func TestGenerateDIDKey(t *testing.T) {
 		{
 			name:      "x25519",
 			keyType:   crypto.X25519,
-			expectErr: false,
-		},
-		{
-			name:      "SECP256k1",
-			keyType:   crypto.SECP256k1,
 			expectErr: false,
 		},
 		{
@@ -252,27 +246,6 @@ func TestDIDKeySignVerify(t *testing.T) {
 		msg := []byte("hello world")
 		signature := ed25519.Sign(ed25519PrivKey, msg)
 		verified := ed25519.Verify(ed25519PubKey, msg, signature)
-		assert.True(t, verified)
-	})
-
-	t.Run("Test secp256k1 did:key", func(t *testing.T) {
-		privKey, didKey, err := GenerateDIDKey(crypto.SECP256k1)
-		assert.NoError(t, err)
-		assert.NotNil(t, didKey)
-		assert.NotEmpty(t, privKey)
-
-		secp256k1PrivKey, ok := privKey.(secp.PrivateKey)
-		assert.True(t, ok)
-
-		ecdsaPrivKey := secp256k1PrivKey.ToECDSA()
-		ecdsaPubKey := ecdsaPrivKey.PublicKey
-
-		msg := []byte("hello world")
-		digest := sha256.Sum256(msg)
-		r, s, err := ecdsa.Sign(rand.Reader, ecdsaPrivKey, digest[:])
-		assert.NoError(t, err)
-
-		verified := ecdsa.Verify(&ecdsaPubKey, digest[:], r, s)
 		assert.True(t, verified)
 	})
 

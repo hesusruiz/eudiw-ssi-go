@@ -46,10 +46,6 @@ func TestKnownTestVectors(t *testing.T) {
 			name:     "RSA",
 			testFile: RSATestVector,
 		},
-		{
-			name:     "secp256k1",
-			testFile: SECP256k1TestVector,
-		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(tt *testing.T) {

@@ -380,6 +380,6 @@ func IsSupportedDIDKeyType(kt crypto.KeyType) bool {
 }
 
 func GetSupportedDIDKeyTypes() []crypto.KeyType {
-	return []crypto.KeyType{crypto.Ed25519, crypto.X25519, crypto.SECP256k1,
+	return []crypto.KeyType{crypto.Ed25519, crypto.X25519,
 		crypto.P256, crypto.P384, crypto.P521, crypto.RSA}
 }

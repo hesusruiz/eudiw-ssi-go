@@ -3,9 +3,9 @@ package exchange
 import (
 	"fmt"
 
-	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
 	"github.com/lestrrat-go/jwx/v2/jwt"
 	"github.com/pkg/errors"
 )

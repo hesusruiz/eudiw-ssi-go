@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/goccy/go-json"
 	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/hesusruiz/eudiw-ssi-go/crypto/jwx"
 	"github.com/hesusruiz/eudiw-ssi-go/did/key"
-	"github.com/goccy/go-json"
 	"github.com/lestrrat-go/jwx/v2/jwa"
 	"github.com/lestrrat-go/jwx/v2/jwt"
 	"github.com/pkg/errors"
@@ -191,7 +191,7 @@ func createSigner(t *testing.T) *jwx.Signer {
 	issuerKID := expandedIssuerDID.VerificationMethod[0].ID
 	assert.NotEmpty(t, issuerKID)
 
-	issuerSigner, err := jwx.NewJWXSigner(issuerDID.String(), issuerKID, issuerPrivKey)
+	issuerSigner, err := jwx.NewJWXSigner(issuerDID.String(), &issuerKID, issuerPrivKey)
 	assert.NoError(t, err)
 	return issuerSigner
 }

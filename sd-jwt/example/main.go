@@ -50,7 +50,7 @@ func main() {
 
 	// The issuer needs to issue a credential that *enables* Alice to choose what pieces she wished to disclose. The
 	// bits below are the technical setup so the issuer can sign using the private key we created above.
-	issuerSigner, _ := jwx.NewJWXSigner(issuerDID.String(), issuerKID, issuerPrivKey)
+	issuerSigner, _ := jwx.NewJWXSigner(issuerDID.String(), &issuerKID, issuerPrivKey)
 	signer := sdjwt.NewSDJWTSigner(&lestratSigner{
 		*issuerSigner,
 	}, sdjwt.NewSaltGenerator(16))

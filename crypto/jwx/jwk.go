@@ -10,10 +10,6 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/cloudflare/circl/sign/dilithium"
-	"github.com/cloudflare/circl/sign/dilithium/mode2"
-	"github.com/cloudflare/circl/sign/dilithium/mode3"
-	"github.com/cloudflare/circl/sign/dilithium/mode5"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/goccy/go-json"
 	"github.com/lestrrat-go/jwx/v2/jwa"
@@ -91,9 +87,6 @@ func (k *PrivateKeyJWK) ToPrivateKey() (gocrypto.PrivateKey, error) {
 	if IsSupportedJWXSigningVerificationAlgorithm(k.ALG) || IsSupportedKeyAgreementType(k.CRV) {
 		return k.toSupportedPrivateKey()
 	}
-	if IsExperimentalJWXSigningVerificationAlgorithm(k.ALG) {
-		return k.toExperimentalPrivateKey()
-	}
 	return nil, fmt.Errorf("unsupported key conversion %+v", k)
 }
 
@@ -120,34 +113,8 @@ func (k *PrivateKeyJWK) toSupportedPrivateKey() (gocrypto.PrivateKey, error) {
 
 func (k *PrivateKeyJWK) toExperimentalPrivateKey() (gocrypto.PrivateKey, error) {
 	switch k.KTY {
-	case DilithiumKTY:
-		return k.toDilithiumPrivateKey()
 	default:
 		return nil, fmt.Errorf("unsupported key type %s", k.KTY)
-	}
-}
-
-// complies with https://www.ietf.org/id/draft-ietf-cose-dilithium-00.html#name-crydi-key-representations
-func (k *PrivateKeyJWK) toDilithiumPrivateKey() (gocrypto.PrivateKey, error) {
-	if k.D == "" {
-		return nil, fmt.Errorf("missing private key D")
-	}
-	if k.X == "" {
-		return nil, fmt.Errorf("missing public key X")
-	}
-	decodedPrivKey, err := base64.RawURLEncoding.DecodeString(k.D)
-	if err != nil {
-		return nil, err
-	}
-	switch k.ALG {
-	case DilithiumMode2Alg.String():
-		return dilithium.Mode2.PrivateKeyFromBytes(decodedPrivKey), nil
-	case DilithiumMode3Alg.String():
-		return dilithium.Mode3.PrivateKeyFromBytes(decodedPrivKey), nil
-	case DilithiumMode5Alg.String():
-		return dilithium.Mode5.PrivateKeyFromBytes(decodedPrivKey), nil
-	default:
-		return nil, fmt.Errorf("unsupported algorithm %s", k.ALG)
 	}
 }
 
@@ -203,9 +170,6 @@ func (k *PublicKeyJWK) ToPublicKey() (gocrypto.PublicKey, error) {
 	if IsSupportedJWXSigningVerificationAlgorithm(k.ALG) || IsSupportedKeyAgreementType(k.CRV) {
 		return k.toSupportedPublicKey()
 	}
-	if IsExperimentalJWXSigningVerificationAlgorithm(k.ALG) {
-		return k.toExperimentalPublicKey()
-	}
 	return nil, fmt.Errorf("unsupported key conversion %+v", k)
 }
 
@@ -232,30 +196,8 @@ func (k *PublicKeyJWK) toSupportedPublicKey() (gocrypto.PublicKey, error) {
 
 func (k *PublicKeyJWK) toExperimentalPublicKey() (gocrypto.PublicKey, error) {
 	switch k.KTY {
-	case DilithiumKTY:
-		return k.toDilithiumPublicKey()
 	default:
 		return nil, fmt.Errorf("unsupported key type %s", k.KTY)
-	}
-}
-
-func (k *PublicKeyJWK) toDilithiumPublicKey() (gocrypto.PublicKey, error) {
-	if k.X == "" {
-		return nil, fmt.Errorf("missing public key X")
-	}
-	decodedPubKey, err := base64.RawURLEncoding.DecodeString(k.X)
-	if err != nil {
-		return nil, errors.Wrap(err, "decoding public key")
-	}
-	switch k.ALG {
-	case DilithiumMode2Alg.String():
-		return dilithium.Mode2.PublicKeyFromBytes(decodedPubKey), nil
-	case DilithiumMode3Alg.String():
-		return dilithium.Mode3.PublicKeyFromBytes(decodedPubKey), nil
-	case DilithiumMode5Alg.String():
-		return dilithium.Mode5.PublicKeyFromBytes(decodedPubKey), nil
-	default:
-		return nil, fmt.Errorf("unsupported algorithm %s", k.ALG)
 	}
 }
 
@@ -278,15 +220,6 @@ func PublicKeyToPublicKeyJWK(kid *string, key gocrypto.PublicKey) (*PublicKeyJWK
 		pubKeyJWK, err = jwkFromSECP256k1PublicKey(k)
 	case ecdsa.PublicKey:
 		pubKeyJWK, err = jwkFromECDSAPublicKey(k)
-	case mode2.PublicKey:
-		pubKey := dilithium.Mode2.PublicKeyFromBytes(k.Bytes())
-		pubKeyJWK, err = jwkFromDilithiumPublicKey(dilithium.Mode2, pubKey)
-	case mode3.PublicKey:
-		pubKey := dilithium.Mode3.PublicKeyFromBytes(k.Bytes())
-		pubKeyJWK, err = jwkFromDilithiumPublicKey(dilithium.Mode3, pubKey)
-	case mode5.PublicKey:
-		pubKey := dilithium.Mode5.PublicKeyFromBytes(k.Bytes())
-		pubKeyJWK, err = jwkFromDilithiumPublicKey(dilithium.Mode5, pubKey)
 	default:
 		return nil, fmt.Errorf("unsupported public key type: %T", k)
 	}
@@ -332,15 +265,6 @@ func PrivateKeyToPrivateKeyJWK(keyID *string, key gocrypto.PrivateKey) (*PublicK
 			return nil, nil, fmt.Errorf("unsupported curve: %s", k.Curve.Params().Name)
 		}
 		pubKeyJWK, privKeyJWK, err = jwkFromECDSAPrivateKey(k)
-	case mode2.PrivateKey:
-		privKey := dilithium.Mode2.PrivateKeyFromBytes(k.Bytes())
-		pubKeyJWK, privKeyJWK, err = jwkFromDilithiumPrivateKey(dilithium.Mode2, privKey)
-	case mode3.PrivateKey:
-		privKey := dilithium.Mode3.PrivateKeyFromBytes(k.Bytes())
-		pubKeyJWK, privKeyJWK, err = jwkFromDilithiumPrivateKey(dilithium.Mode3, privKey)
-	case mode5.PrivateKey:
-		privKey := dilithium.Mode5.PrivateKeyFromBytes(k.Bytes())
-		pubKeyJWK, privKeyJWK, err = jwkFromDilithiumPrivateKey(dilithium.Mode5, privKey)
 	default:
 		return nil, nil, fmt.Errorf("unsupported private key type: %T", k)
 	}
@@ -562,34 +486,6 @@ func jwkFromECDSAPrivateKey(key ecdsa.PrivateKey) (*PublicKeyJWK, *PrivateKeyJWK
 	return &publicKeyJWK, &privateKeyJWK, nil
 }
 
-// as per https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-00.html
-func jwkFromDilithiumPrivateKey(m dilithium.Mode, k dilithium.PrivateKey) (*PublicKeyJWK, *PrivateKeyJWK, error) {
-	var alg jwa.SignatureAlgorithm
-	switch m {
-	case dilithium.Mode2:
-		alg = DilithiumMode2Alg
-	case dilithium.Mode3:
-		alg = DilithiumMode3Alg
-	case dilithium.Mode5:
-		alg = DilithiumMode5Alg
-	}
-
-	// serialize pub and priv keys to b64url
-	privKeyBytes := k.Bytes()
-	d := base64.RawURLEncoding.EncodeToString(privKeyBytes)
-	publicKey := k.Public().(dilithium.PublicKey)
-	pubKeyBytes := publicKey.Bytes()
-	x := base64.RawURLEncoding.EncodeToString(pubKeyBytes)
-	privKeyJWK := PrivateKeyJWK{
-		KTY: DilithiumKTY,
-		X:   x,
-		ALG: alg.String(),
-		D:   d,
-	}
-	pubKeyJWK := privKeyJWK.ToPublicKeyJWK()
-	return &pubKeyJWK, &privKeyJWK, nil
-}
-
 // jwkFromECDSAPublicKey converts a ECDSA public key to a JWK
 func jwkFromECDSAPublicKey(key ecdsa.PublicKey) (*PublicKeyJWK, error) {
 	ecdsaKeyGeneric, err := jwk.FromRaw(key)
@@ -608,25 +504,4 @@ func jwkFromECDSAPublicKey(key ecdsa.PublicKey) (*PublicKeyJWK, error) {
 		return nil, errors.Wrap(err, "unmarshalling ecdsa jwk")
 	}
 	return &publicKeyJWK, nil
-}
-
-func jwkFromDilithiumPublicKey(mode dilithium.Mode, k dilithium.PublicKey) (*PublicKeyJWK, error) {
-	var alg jwa.SignatureAlgorithm
-	switch mode {
-	case dilithium.Mode2:
-		alg = DilithiumMode2Alg
-	case dilithium.Mode3:
-		alg = DilithiumMode3Alg
-	case dilithium.Mode5:
-		alg = DilithiumMode5Alg
-	}
-
-	// serialize pub and priv keys to b64url
-	pubKeyBytes := k.Bytes()
-	x := base64.RawURLEncoding.EncodeToString(pubKeyBytes)
-	return &PublicKeyJWK{
-		KTY: DilithiumKTY,
-		X:   x,
-		ALG: alg.String(),
-	}, nil
 }

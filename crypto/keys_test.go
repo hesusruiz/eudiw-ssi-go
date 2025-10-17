@@ -3,7 +3,6 @@ package crypto
 import (
 	"testing"
 
-	"github.com/cloudflare/circl/sign/dilithium"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -135,88 +134,6 @@ func TestKeyToBytes(t *testing.T) {
 			assert.Equal(t, keyType, kt)
 		})
 	}
-}
-
-func TestDilithiumKeys(t *testing.T) {
-	t.Run("Able to generate dilithium key pairs for each mode", func(t *testing.T) {
-		tests := []struct {
-			name string
-			m    dilithium.Mode
-		}{
-			{
-				"mode2",
-				dilithium.Mode2,
-			},
-			{
-				"mode3",
-				dilithium.Mode3,
-			},
-			{
-				"mode5",
-				dilithium.Mode5,
-			},
-		}
-		for _, test := range tests {
-			t.Run(test.name, func(t *testing.T) {
-				pk, sk, err := GenerateDilithiumKeyPair(test.m)
-				assert.NoError(t, err)
-				assert.NotEmpty(t, pk)
-				assert.NotEmpty(t, sk)
-			})
-		}
-	})
-
-	t.Run("Able to extract the mode for each Dilithium private key type", func(t *testing.T) {
-		tests := []struct {
-			m dilithium.Mode
-		}{
-			{
-				dilithium.Mode2,
-			},
-			{
-				dilithium.Mode3,
-			},
-			{
-				dilithium.Mode5,
-			},
-		}
-		for _, test := range tests {
-			t.Run(test.m.Name(), func(t *testing.T) {
-				_, privKey, err := GenerateDilithiumKeyPair(test.m)
-				assert.NoError(t, err)
-
-				mode, err := GetModeFromDilithiumPrivateKey(privKey)
-				assert.NoError(t, err)
-				assert.Equal(t, test.m, mode)
-			})
-		}
-	})
-
-	t.Run("Able to extract the mode for each Dilithium public key type", func(t *testing.T) {
-		tests := []struct {
-			m dilithium.Mode
-		}{
-			{
-				dilithium.Mode2,
-			},
-			{
-				dilithium.Mode3,
-			},
-			{
-				dilithium.Mode5,
-			},
-		}
-		for _, test := range tests {
-			t.Run(test.m.Name(), func(t *testing.T) {
-				pubKey, _, err := GenerateDilithiumKeyPair(test.m)
-				assert.NoError(t, err)
-
-				mode, err := GetModeFromDilithiumPublicKey(pubKey)
-				assert.NoError(t, err)
-				assert.Equal(t, test.m, mode)
-			})
-		}
-	})
 }
 
 func TestSECP256k1Conversions(t *testing.T) {

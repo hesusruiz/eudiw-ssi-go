@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
+	"github.com/hesusruiz/eudiw-ssi-go/crypto"
 	"github.com/lestrrat-go/jwx/v2/jwa"
 	"github.com/lestrrat-go/jwx/v2/jws"
 	"github.com/lestrrat-go/jwx/v2/jwt"
@@ -56,7 +56,7 @@ func jwxSigner(id string, jwk PrivateKeyJWK, key gocrypto.PrivateKey) (*Signer, 
 		}
 		jwk.ALG = alg
 	}
-	if !IsSupportedJWXSigningVerificationAlgorithm(jwk.ALG) && !IsExperimentalJWXSigningVerificationAlgorithm(jwk.ALG) {
+	if !IsSupportedJWXSigningVerificationAlgorithm(jwk.ALG) {
 		return nil, fmt.Errorf("unsupported signing algorithm: %s", jwk.ALG)
 	}
 	if convertedPrivKey, ok := privKeyForJWX(key); ok {
@@ -308,23 +308,4 @@ func IsSupportedKeyAgreementType(keyAgreementType string) bool {
 
 func GetSupportedKeyAgreementTypes() []string {
 	return []string{jwa.X25519.String()}
-}
-
-// IsExperimentalJWXSigningVerificationAlgorithm returns true if the algorithm is supported for experimental signing or verifying JWXs
-func IsExperimentalJWXSigningVerificationAlgorithm(algorithm string) bool {
-	for _, supported := range GetExperimentalJWXSigningVerificationAlgorithms() {
-		if algorithm == supported {
-			return true
-		}
-	}
-	return false
-}
-
-// GetExperimentalJWXSigningVerificationAlgorithms returns a list of experimental signing and verifying algorithms for JWXs
-func GetExperimentalJWXSigningVerificationAlgorithms() []string {
-	return []string{
-		DilithiumMode2Alg.String(),
-		DilithiumMode3Alg.String(),
-		DilithiumMode5Alg.String(),
-	}
 }

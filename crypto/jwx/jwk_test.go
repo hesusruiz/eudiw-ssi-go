@@ -74,30 +74,3 @@ func TestKeyToJWK(t *testing.T) {
 		})
 	}
 }
-
-// https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-00.html#section-6.1.1
-func TestDilithiumVectors(t *testing.T) {
-	t.Run("Dilithium Private Key", func(tt *testing.T) {
-		var pubKeyJWK PublicKeyJWK
-		retrieveTestVectorAs(tt, dilithiumPublicJWK, &pubKeyJWK)
-		assert.NotEmpty(tt, pubKeyJWK)
-		assert.Equal(tt, DilithiumKTY, pubKeyJWK.KTY)
-		assert.EqualValues(tt, DilithiumMode5Alg, pubKeyJWK.ALG)
-
-		gotPubKey, err := pubKeyJWK.ToPublicKey()
-		assert.NoError(tt, err)
-		assert.NotEmpty(tt, gotPubKey)
-	})
-
-	t.Run("Dilithium Private Key", func(tt *testing.T) {
-		var privKeyJWK PrivateKeyJWK
-		retrieveTestVectorAs(tt, dilithiumPrivateJWK, &privKeyJWK)
-		assert.NotEmpty(tt, privKeyJWK)
-		assert.Equal(tt, DilithiumKTY, privKeyJWK.KTY)
-		assert.EqualValues(tt, DilithiumMode5Alg, privKeyJWK.ALG)
-
-		gotPrivKey, err := privKeyJWK.ToPrivateKey()
-		assert.NoError(tt, err)
-		assert.NotEmpty(tt, gotPrivKey)
-	})
-}

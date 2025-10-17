@@ -4,6 +4,7 @@ import (
 	gocrypto "crypto"
 	"crypto/ed25519"
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/hesusruiz/eudiw-ssi-go/cryptosuite/jws2020"
@@ -46,11 +47,11 @@ func (d DIDKey) String() string {
 
 // Suffix returns the value without the `did:key` prefix
 func (d DIDKey) Suffix() (string, error) {
-	split := strings.Split(string(d), Prefix+":")
-	if len(split) != 2 {
+	suffix := strings.TrimPrefix(string(d), Prefix+":")
+	if len(suffix) == 0 || len(suffix) == len(string(d)) {
 		return "", fmt.Errorf("invalid did:key: %s", d)
 	}
-	return split[1], nil
+	return suffix, nil
 }
 
 func (DIDKey) Method() did.Method {
@@ -375,12 +376,7 @@ func processExpansionOptions(opts ...Option) (cryptosuite.LDKeyType, bool, error
 
 func IsSupportedDIDKeyType(kt crypto.KeyType) bool {
 	keyTypes := GetSupportedDIDKeyTypes()
-	for _, t := range keyTypes {
-		if t == kt {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(keyTypes, kt)
 }
 
 func GetSupportedDIDKeyTypes() []crypto.KeyType {
